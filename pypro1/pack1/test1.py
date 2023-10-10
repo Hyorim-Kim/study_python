@@ -83,3 +83,40 @@ print('나는 키가 %f이고, 에너지가 %d%%.'%(177.7, 100))
 print('이름은 {0}, 나이는 {1}'.format('한국인', 33))
 print('이름은 {}, 나이는 {}'.format('신선해', 33))
 print('이름은 {1}, 나이는 {0}'.format(34, '강나루'))
+
+print('-------------------------------')
+# 산술, 관계, 논리, 기타 연산
+print(5 + 3, 5 - 3, 5 * 3, 5 / 3, 5 // 3, 5 % 3, 5 ** 3)
+#             8          2     15    1.6666     1            2            125
+print(divmod(5, 3))  # (1, 2)
+print(3 + 4 * 5, (3 + 4) * 5)  # 23 35  # 연산 우선순위 : 소괄호() > 산술(*, / > +, -) > 관계 > 논리 > 치환 
+
+print(5 > 3, 5 == 3, 5 != 3)
+print(5 > 3 and 4 < 3, 5 > 3 or 4 < 3, not(5 >= 3))
+print('문자열 더하기 연산 ', end=':')
+print('가을 ' + '하늘')
+print("*" * 20)
+
+print('누적')
+a = 10
+a = a + 1
+a += 1
+# a ++  # 증감연산자 X
+print('a : ', a)
+print('부호 변경 : ', a, -a, --a, +a, ++a, a*-1)
+#           부호 변경 :  12 -12 12 12 12 -12
+
+print('boolean : ', bool(False), bool(0), bool(0.0), bool(None), bool(""), bool([]), bool({}), bool(set()))
+#         boolean :  False False False False False False False False
+print('boolean : ', bool(True), bool(1), bool(-3.4), bool(None), bool("kbs"), bool([1]), bool({1}), bool(set((1,))))
+#         boolean :  True True True False True True True True
+
+print("escape 문자 \어쩌구저쩌구")
+print('aa\tb')  # tab
+print('aa\nb')  # line skip
+print('aa\bb')
+print(r'aa\tb')  # 소문자 r을 붙이면 escape 문자가 적용되지 않고 순수 데이터 출력됨
+print(r'aa\nb')
+print(r'aa\bb')
+
+# python coding 규칙 : pep~
