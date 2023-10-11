@@ -5,7 +5,7 @@ for i in [1,2,3,4,5]:  # list
     print(i, end = ' ')
 
 print()
-for i in {1,2,3,4,5}:  # set, 순서 없음
+for i in {1,2,3,4,5}:  # set, 순서 존재, 중복 불가
     print(i, end = ' ')
     
 print()
@@ -41,8 +41,8 @@ print('합은 ' + str(tot) + ', 평균은 ' + str(tot / len(numbers)))
 
 print()
 li = ['a', 'b', 'c']
-for k, d in enumerate(li):  # 나열형, 묶음형 자료를 넣으면 됨
-    print(k, d)
+for k, d in enumerate(li):  # 묶음형 자료를 넣으면 됨, 리스트 li의 각 아이템에 대해 인덱스와 값을 가져온다.
+    print(k, d)  # k에는 인덱스가, d에는 값이 할당됨, 출력
 
 print()
 for n in [2, 3]:
@@ -62,7 +62,7 @@ else:
 
 print()
 jumsu = [95, 70, 60, 55, 100]  # 70점 이상만 합격 처리
-num = 0
+num = 0  # 이 변수는 몇 번째 학생인지를 나타냄
 for jum in jumsu:
     num += 1;
     if jum < 70:continue
@@ -193,7 +193,7 @@ for i in range(2, 6):
 # 문2 : 1 ~ 100 사이의 정수 중 3의 배수이면서 5의 배수의 합 출력
 print()
 tot = 0
-for i in range(1, 100):
+for i in range(1, 101):
     if i % 3 == 0 and i % 5 == 0:
         tot += i
         print(i)
@@ -207,5 +207,5 @@ print()
 for i in range(1, 7):
     for j in range(1, 7):
         if (i + j) % 4 == 0:
-            print(i, j, i+j)
+            print(i, j,'=', i+j)
 
