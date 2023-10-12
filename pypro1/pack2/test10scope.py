@@ -9,7 +9,7 @@ def funcSports():
     player = '지역대표'  # local 우선순위 먼저
     print(name, player)
 
-funcSports()
+funcSports()  # 함수 호출해야 출력됨
 
 print()
 a = 1; b = 2; c = 3  # global

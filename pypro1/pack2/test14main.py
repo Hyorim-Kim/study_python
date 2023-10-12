@@ -31,7 +31,7 @@ moduletest.test14etc.Hap(5, 3)
 from moduletest.test14etc import Cha
 Cha(5, 3)
 
-# C:\anaconda3\Lib에 test13etc2.py 복붙함
+# C:\anaconda3\Lib에 test14etc2.py 복붙함
 import test14etc2  # 패키지명 생략하고 모듈명만 써도 됨
 test14etc2.Gop(5, 3)
 from test14etc2 import Nanugi
