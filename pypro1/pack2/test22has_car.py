@@ -11,7 +11,7 @@ class PohamCar:
 
     def turnHandle(self, q):
         if q > 0:
-            self.turnShowMessage = self.handle.rightTurn(q)  # self를 안쓰면 tunHandle -> module 순으로 찾음, turnShowMessage = '정지' 여기로 안감
+            self.turnShowMessage = self.handle.rightTurn(q)  # self를 안쓰면 turnHandle -> module 순으로 찾음, turnShowMessage = '정지' 여기로 안감
         elif q < 0:
             self.turnShowMessage = self.handle.leftTurn(q)
         elif q == 0:

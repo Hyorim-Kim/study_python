@@ -2,16 +2,15 @@
 
 class Fridge:
     isOpened = False  # 냉장고 문 개폐 여부
-    foods = []  # 음식물 담기용 리스트
+    foods = []  # 냉장고에 담긴 음식을 저장하는 리스트
     
     def open(self):
         self.isOpened = True
         print('냉장고 문 열기')
         
     def put(self, thing):
-        if self.isOpened:
-            self.foods.append(thing)  # 포함관계
-            # list 에 데이터 넣을땐 append
+        if self.isOpened:  # 문이 열려 있을 때만
+            self.foods.append(thing)  # 포함관계  # list 에 데이터 넣을땐 append            
             print('냉장고 속에 음식 담기 완료')
             self.list()
         else:
