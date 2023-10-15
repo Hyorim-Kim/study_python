@@ -18,7 +18,7 @@ class Lion:
 class Liger1(Tiger, Lion):  # 다중 상속
     pass
 
-obj1 = Liger1()
+obj1 = Liger1()  # 인스턴스 생성
 obj1.cry()  # 먼저 적어준 Tiger의 멤버가 수행됨
 obj1.eat()
 obj1.hobby()
@@ -28,7 +28,7 @@ print('------------------------')
 def hobby():
     print('모듈의 멤버인 함수')
     
-class Liger2(Lion, Tiger):
+class Liger2(Lion, Tiger):  # 다중 상속
     data = '라이거 만세'
     
     def play(self):
@@ -38,11 +38,11 @@ class Liger2(Lion, Tiger):
         print('라이거는 운동을 좋아함')
 
     def showHobby(self):
-        self.hobby()
-        super().hobby()
-        hobby()
-        print(self.data + ", " + super().data)
+        self.hobby()  # 라이거는 운동을 좋아함
+        super().hobby()  # 백수의 왕은 채팅을 즐김, Lion의 메소드
+        hobby()  # 모듈의 멤버인 함수
+        print(self.data + ", " + super().data)  # 라이거 만세, 호랑이 세상
 
-obj2 = Liger2()
-obj2.cry()
+obj2 = Liger2()  # 인스턴스 생성
+obj2.cry()  # 먼저 적어준 Lion의 멤버가 수행됨
 obj2.showHobby()

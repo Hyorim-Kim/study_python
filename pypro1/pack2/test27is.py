@@ -40,7 +40,7 @@ class Employee(Person):
         print('Employee 생성자')
     
     def printInfo(self):  # method overriding(다형성 구사)
-        print('Employee의 오버라이딩된 printInfo')
+        print('Employee의 오버라이딩 된 printInfo')
         
     def eprintInfo(self):
         print(self.say, super().say)  # self는 자식에서 찾고 없으면 부모로 올라가는 반면, super는 처음부터 부모 클래스에서 찾음
@@ -65,15 +65,15 @@ class Worker(Person):
     
     def wprintInfo(self):
         self.printInfo()  # 바로 위의 printInfo 호출
-        super().printInfo()  # person
+        super().printInfo()  # Person의 메소드 호출
 
 w = Worker('30')
-print(w.say, w.nai)  # say, nai를 worker에서 찾지만 없기 때문에 person에서 찾음  -> worker에 say 추가, woker에서 찾음(부모 숨어버림, 은닉화)
+print(w.say, w.nai)  # say, nai를 worker에서 찾지만 없기 때문에 person에서 찾음  -> worker에 say 추가, worker에서 찾음(부모 숨어버림, 은닉화)
 w.wprintInfo()
 
 print("^^^" * 20)
 class Programmer(Worker):  # Worker의 자식
-    def __init__(self, nai):  # worker -> person 생성자에 끌고가기 위해 nai(age) 인수? 필요
+    def __init__(self, nai):  # worker -> person 생성자에 끌고가기 위해 nai(age) 인수 필요
         print('Programmer 생성자')
         # super().__init__(nai)  # Bound call, self가 자동으로 들어감
         Worker.__init__(self, nai)  # UnBound call

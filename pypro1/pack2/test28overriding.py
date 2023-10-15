@@ -15,7 +15,7 @@ class Child2(Parent):
     def my(self):
         print('Child2만의 고유 메소드')
 
-c1 = Child1()
+c1 = Child1()  # 객체 생성
 c1.printData()
 print()
 c2 = Child2()
