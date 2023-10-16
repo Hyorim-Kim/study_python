@@ -3,8 +3,8 @@ import os
 print(os.getcwd())  # 현재 모듈의 경로명 반환
 
 try:
-    print('파일 읽기')
     # mode=r(read), w(write), a(append), b(binary), t(text)
+    print('파일 읽기')
     #f1 = open(r'C:\Users\user\git\study_python\pypro1\pack3\test37.txt', mode='r', encoding='utf-8')  # 절대 경로
     #f1 = open(os.getcwd() + r'\test37.txt', mode='r', encoding='utf-8')  # 상대 경로
     f1 = open(r'test37.txt', mode='r', encoding='utf-8')  # 같은 경로에 있을 때

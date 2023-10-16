@@ -29,7 +29,7 @@ try:
     
     print()
     print('저장-----------')
-    with open('hello.obj', mode='wb') as f1:  # binary 형식으로 저장 -> obj, dat .. 로 작성
+    with open('hello.obj', mode='wb') as f1:  # binary 형식으로 저장 -> .obj, .dat .. 로 작성
         pickle.dump(tupleData, f1)  # 저장(저장 할 객체, 파일 객체)
         pickle.dump(listData, f1)
     print('피클을 이용한 객체 저장')
