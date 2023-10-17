@@ -33,12 +33,12 @@ try:
     sql_data = 6, '마이쮸', 50, '1000'  # tuple은 괄호를 두르지 않아도 ok
     cursor.execute(sql, sql_data)
     # result = cursor.execute(sql, sql_data)  # 성공하면 1, 실패하면 0, 값을 보고 확인 가능
-    conn.commit()  # 자동커밋 아님
+    conn.commit()  # 자동커밋 아니기 때문에
     '''
     # 자료 수정
     '''
     sql = "update sangdata set sang=%s,su=%s,dan=%s where code=%s"
-    sql_data = ('에너지바', 12, 1500,5)
+    sql_data = ('에너지바', 12, 1500, 5)
     result = cursor.execute(sql, sql_data)
     print(result)
     conn.commit()

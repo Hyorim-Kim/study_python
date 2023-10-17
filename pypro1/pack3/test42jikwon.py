@@ -14,7 +14,7 @@ config = {
 
 import pickle
 with open(r'mydb.dat', mode='rb') as obj:
-    config = pickle.load(obj)  # pickle로 저장했으므로
+    config = pickle.load(obj)  # pickle로 저장했으므로 load만 하면 됨
     
 def start():
     try:
