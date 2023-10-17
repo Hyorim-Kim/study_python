@@ -21,17 +21,17 @@ def func(x):
 if __name__ == '__main__':
     '''
     startTime = int(time.time())
-    # 실습 1 : 일반적인 방법으로 함수를 호출
+    # 실습 1 : 일반적인 방법으로 함수를 호출(단일 스레드)
     for i in range(0, 10):
         print(func(i))  # 값 0에 대한 작업 pid = 15380 직렬 처리
     endTime = int(time.time())
     print('총 작업 시간 : ', (endTime - startTime))
    '''
-    # 실습 2 : Pool 클래스로 함수 호출 --> 속도가 빨라짐, 자원을 많이 소모
+    # 실습 2 : Pool 클래스로 함수 호출 --> 속도가 빨라짐, 하지만 자원을 많이 소모
     startTime = int(time.time())
     
     p = Pool(processes=3)  # Pool(process의 개수)  3 ~ 5개가 적당
-    print(p.map(func, range(0, 10)))  # mapping(0-func, 1-func, ...)  # 병렬 처리
+    print(p.map(func, range(0, 10)))  # mapping(0-func, 1-func, ...)  # 함수를 병렬로 실행
           
     endTime = int(time.time())
     print('총 작업 시간 : ', (endTime - startTime))
