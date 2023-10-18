@@ -2,9 +2,9 @@
 import requests  # web 사이트에 접근 가능하게 해줌
 from bs4 import BeautifulSoup as bs
 import time
-from multiprocessing import Pool  # Pool을 사용하면 병렬 처리로 인해 시간이 단축되는지 확인
+from multiprocessing import Pool  # Pool을 사용했을 때 병렬 처리로 인해 시간이 단축되는지 확인
 
-# 스크래핑 대상 컨텐 츠 : https://beomi.github.io/beomi.github.io_old/
+# 스크래핑 대상 컨텐츠 : https://beomi.github.io/beomi.github.io_old/
 def get_links():
     data = requests.get('https://beomi.github.io/beomi.github.io_old/').text  # text : 문자열 읽음
     soup = bs(data, 'html.parser')  # BeautifulSoup 객체로 변환
