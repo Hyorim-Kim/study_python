@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+자료 출력<p/>
+<form action="http://localhost/select/" method="post">{% csrf_token %}  <!--사이트 위조 공격에서 벗어남-->
+	성별 : 
+	<input type="submit" value="확인">
+</form>
+</body>
+</html>

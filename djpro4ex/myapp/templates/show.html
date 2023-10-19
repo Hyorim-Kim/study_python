@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>요청 결과: {{gender}}</h1>
+	{% if gender == '남자' %}
+        <img src="/static/images/boy.jpg" alt="남자 이미지" style="width: 500px;">
+    {% elif gender == '여자' %}
+        <img src="/static/images/girl.jpg" alt="여자 이미지" style="width: 500px;">
+    {% endif %}
+</body>
+</html>
