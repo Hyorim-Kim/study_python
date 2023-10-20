@@ -1,0 +1,21 @@
+{% extends 'header.html' %}
+{% block content %}
+<h2 style="text-align: center;">♥ ♡ 친구 정보 ♡♥ </h2>
+{% if datas.count > 0 %}
+<table class="table table-bordered table-borderless" style="width: 70%; margin-left: auto; margin-right: auto;">
+    <tr><th>번호</th><th>이름</th><th>주소</th><th>나이</th></tr>
+    {% for a in datas %}
+        <tr>
+            <td>{{a.id}}</td>
+            <td>{{a.irum}}</td>
+            <td>{{a.juso}}</td>
+            <td>{{a.nai}}</td>
+        </tr>
+    {% endfor %}
+</table>
+<h4>건수 : {{ datas.count }}</h4>
+<button id="btnOk" style="margin-left: 50%">뒤로 가기♥</button>
+{% else %}
+    <p>자료가 없어요</p>
+{% endif %}
+{% endblock %}

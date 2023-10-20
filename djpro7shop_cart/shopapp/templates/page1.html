@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	window.onload = function(){
+		document.querySelector("#btnOk").onclick = function(){
+			frm.submit();
+		}
+	}
+</script>
+</head>
+<body>
+<table>
+	<tr>
+		<td>
+			<img src="/static/images/pic1.jpg" style="width: 50%;" />
+		</td>
+		<td>
+			<pre>
+				프라홈 레트로 대형 기계식 빅버튼 전자 계산기 청축 키캡
+				101개 상품평
+				36% 26,000원
+				16,500원
+				최대 825원 적립
+				무료배송 (로켓배송 상품 19,800원 이상 구매 시)
+				내일(토) 10/21 도착 보장 (12시간 6분 내 주문 시 / 서울⋅경기 기준)
+			</pre>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<form action="cart" name="frm" method="post">{% csrf_token %}
+				<input type="hidden" name="name" value="빅버튼 전자 계산기">
+				<input type="hidden" name="price" value="26000">
+				<input type="button" id="btnOk" value="장바구니에 담기">
+				<input type="button" value="홈으로" onclick="history.back()">
+			</form>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'css/test.css' %}">
+</head>
+<body>
+나는 머리글이야 ~
+<hr/>
+{% block content %}
+{% endblock %}
+<hr/>
+{% include "footer.html" %}
+</body>
+</html>

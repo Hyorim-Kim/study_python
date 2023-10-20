@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	window.onload = function(){
+		document.querySelector("#btnOk").onclick = function(){
+			frm.submit();
+		}
+	}
+</script>
+</head>
+<body>
+<table>
+	<tr>
+		<td>
+			<img src="/static/images/pic2.jpg" style="width: 50%;" />
+		</td>
+		<td>
+			<pre>
+					[12시전주문 오늘출발] 메르시보꾸 아동용 D2205 내츄럴항공점퍼
+					50개 상품평
+					41% 50,000원 
+					29,400원
+					 
+					 최대 1,470원 적립
+					품절임박 (6개 남음)
+					무료배송 
+					화요일 10/24 도착 예정
+					판매자:
+					(주)붐붐키즈
+					판매자 평가
+					icon
+					98%
+					(4,435)
+					배송사: 한진택배
+			</pre>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<form action="cart" name="frm" method="post">{% csrf_token %}
+				<input type="hidden" name="name" value="내츄럴항공점퍼">
+				<input type="hidden" name="price" value="29400">
+				<input type="button" id="btnOk" value="장바구니에 담기">
+				<input type="button" value="홈으로" onclick="history.back()">
+			</form>
+		</td>
+	</tr>
+</table>
+</body>
+</html>
