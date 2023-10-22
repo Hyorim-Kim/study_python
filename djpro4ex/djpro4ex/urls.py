@@ -17,12 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from myapp import views
-from django.urls.conf import include
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    
+    path("admin/", admin.site.urls), 
     path('', views.MainFunc),
-    #path('select/', include('myapp.urls')),
-    path('select/', views.SelectFunc, name='select'),
+    path('select/', views.SelectFunc),
 ]
