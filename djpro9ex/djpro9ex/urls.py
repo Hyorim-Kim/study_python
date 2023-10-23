@@ -22,5 +22,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     
     path('', views.Main),
-    path('list', views.DbShow),
+    path('list/', views.DbShow),
 ]
