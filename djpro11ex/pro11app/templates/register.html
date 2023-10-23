@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	window.onload = function(){
+		document.getElementById("btnOk").onclick = function(){
+			frm.submit()
+			location.href="/list";
+		};
+	}
+</script>
+</head>
+<body>
+♥♡ 가족 등록하기 ♡♥<p/>
+<form action="/insertok" method="post" name="frm" onsubmit="return false">{% csrf_token %}
+<!--form onsubmit="return false" : enter 쳤을 때 submit 되는거 방지-->
+	<table>
+		<tr>
+			<td>이름</td>
+			<td><input type="text" name="name"></td>
+		</tr>
+		<tr>
+			<td>나이</td>
+			<td><input type="text" name="age"></td>
+		</tr>
+		<tr>
+			<td>전화</td>
+			<td><input type="text" name="tel"></td>
+		</tr>
+		<tr>
+			<td>성별</td>
+			<td><input type="radio" name="gen" value="male" checked>남
+			 	 	 <input type="radio" name="gen" value="female">여
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1">
+				<input type="button" id="btnOk" value="등록">
+			</td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>
