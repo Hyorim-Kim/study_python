@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+♡ 상품 수정 ♡<br/>
+<form action="/sangpum/updateok" method="post">{% csrf_token %}
+	<input type="hidden" name="code" value="{{data.code}}">
+	<table style="width: 70%;">
+		<tr>
+			<td>코드 : {{data.code}}</td>
+		</tr>
+		<tr>
+			<td>품명 : <input type="text" name="sang" value="{{data.sang}}"></td>
+		</tr>
+		<tr>
+			<td>수량 : <input type="text" name="su" value="{{data.su}}"></td>
+		</tr>
+		<tr>
+			<td>단가 : <input type="text" name="dan" value="{{data.dan}}"></td>
+		</tr>
+		<tr>
+			<td>
+				<input type="submit" value="수정하기">
+				<input type="submit" value="이전화면" onclick="history.back()">
+			</td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>

@@ -4,5 +4,5 @@ from pro11app import views
 
 urlpatterns = [
     path('', views.ListFunc),
-    path('insertok', vie ws.InsertOkFunc),
+    path('insertok', views.InsertOkFunc),
 ]

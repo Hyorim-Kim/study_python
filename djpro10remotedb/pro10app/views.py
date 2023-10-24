@@ -39,7 +39,7 @@ def InsertOkFunc(request):
         # 수정
         # Guest(
         #     g = Guest.objects.get(id=수정할번호)
-        #     g.title = request.POST['title'],  # 변수명은 테이블의 칼럼명, 괄호 안은 파라미터명과 일치해야 함
+        #     g.title = request.POST['title'],
         #     g.content = request.POST['content'],
         # ).save()
         
