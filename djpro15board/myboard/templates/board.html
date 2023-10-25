@@ -6,19 +6,40 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body style="margin: 20px">
+<!--with block test-->
+<!--{% with list='1 2 3 4 5' %}
+ 	{% for num in list.split %}
+ 	 	{{num}},
+ 	{% endfor %}
+{% endwith %}
+<br/>
+{% with '1 2 3 4 5' as range %}
+ 	{% for num in range %}
+ 	 	{{num}}!
+ 	{% endfor %}
+{% endwith %}-->
+
 <div style="width: 95%; text-align: center;">
 	<h3>♡ 게시판 글 ♡</h3>
 </div>
 <a href="/board/insert">글쓰기</a>
 <br/>
 <table style="width: 95%;" class="table">
-	<tr>
+	<tr style="background-color: lavenderblush;">
 		<th>번호</th><th>제 목</th><th>작성자</th><th>작성일</th><th>조회수</th>
 	</tr>
 	{% if datas %}
 	{% for d in datas %}
 	<tr>
 		<td>{{d.id}}</td>
+		<!--<td>
+			{% with ''|center:d.nested as range %}
+			{% for _ in range %}
+			 	&nbsp;&nbsp;
+			{{ forloop.counter }}
+			{% endfor %}
+			{% endwith %}
+		</td>-->
 		<td>
 			<a href="/board/content?id={{d.id}}&page={{datas.number}}">{{d.title}}</a>
 		</td>

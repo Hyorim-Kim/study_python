@@ -89,11 +89,55 @@ def searchFunc(request):
         return render(request, 'board.html', {'datas':datas})
 
 def contentFunc(request):
-    pass
+    page = request.GET.get('page')
+    data = BoardTab.objects.get(id=request.GET.get('id'))  # 해당 아이디의 자료
+    data.readcnt = data.readcnt + 1  # 읽음
+    data.save()  # 업데이트가 이루어짐 -> 조회수 갱신
+    return render(request, 'content.html', {'data':data, 'page':page})
 
 def updateFunc(request):
-    pass
+    if request.method == 'GET':
+        try:
+            data = BoardTab.objects.get(id=request.GET.get('id'))  # 수정할 자료 읽기
+            return render(request, 'update.html', {'data':data})
+        except Exception as e:
+            print('수정 자료 읽기 오류 : ', e)
+            return render(request, 'error.html')
+    elif request.method == 'POST':
+        try:
+            updata = BoardTab.objects.get(id=request.POST.get('id'))  # 수정할 자료 읽기
+            # 비밀번호는 수정에서 제외
+            if updata.passwd == request.POST.get('up_passwd'):  # 비밀번호 확인
+                updata.name = request.POST.get('name')
+                updata.mail = request.POST.get('mail')
+                updata.title = request.POST.get('title')
+                updata.cont = request.POST.get('content')
+                updata.save()
+                return redirect('/board/list')  # 수정 후 목록 보기
+            else:
+                return render(request, 'update.html', {'updata':updata, 'upmsg':"비밀번호 불일치!"})
+            
+        except Exception as e:
+            print('수정 자료 처리 오류 : ', e)
+            return render(request, 'error.html')
 
 def deleteFunc(request):
-    pass
+    if request.method == 'GET':
+        try:
+            deldata = BoardTab.objects.get(id=request.GET.get('id'))
+            return render(request, 'delete.html', {'data':deldata})
+        except Exception as e:
+            print('삭제 자료 읽기 오류 : ', e)
+            return render(request, 'error.html')
+    elif request.method == 'POST':
+        try:
+            deldata = BoardTab.objects.get(id=request.POST.get('id'))  # 삭제할 때 post 방식을 썼기 때문에 두번작성***
+            if deldata.passwd == request.POST.get('del_passwd'):
+                deldata.delete()
+                return redirect('/board/list')  # 삭제 후 목록보기
+            else:
+                return render(request, 'error.html')
+        except Exception as e:
+            print('삭제 자료 처리 오류 : ', e)
+            return render(request, 'error.html')
 
