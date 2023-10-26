@@ -1,5 +1,5 @@
 """
-URL configuration for djpro16ajax project.
+URL configuration for djpro17sangdata project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/dev/topics/http/urls/
@@ -14,15 +14,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path
-from pro16app import views
+from pro17app import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    
-    path('', views.MainFunc),
-    path('startajax', views.Func1),
-    path('goajax', views.Func2),
-    path('chulbalajax', views.Func2),
+     
+    path('',views.MainFunc),
+    path('list/', views.ListFunc),
+    path('list/calldb1',views.ListDbFunc),
+    path('list/calldb2',views.ListDbFunc),
 ]

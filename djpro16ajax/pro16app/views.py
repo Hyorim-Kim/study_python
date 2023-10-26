@@ -1,5 +1,7 @@
 from django.shortcuts import render
 import json
+from django.http.response import HttpResponse
+from doc.pycurl.examples.quickstart.response_headers import content_type
 
 # dict data
 lan = {
@@ -36,12 +38,21 @@ def MainFunc(request):
     testFunc()
     return render(request, 'abc.html')
 
+
 def Func1(request):
-    pass
+    msg = request.GET.get('msg')
+    msg = "nice " + msg
+    print(msg)
+    context = {'key':msg}
+    # json encoding (json 모양을 유지하며 문자열로 바뀜)
+    return HttpResponse(json.dumps(context), content_type="application/json")
+
 
 def Func2(request):
-    pass
-
-def Func3(request):
-    pass
+    mydata = [
+        {'irum':'tom1','nai':22},
+        {'irum':'tom2','nai':12},
+        {'irum':'tom3','nai':2}
+    ]  # list 안 dict
+    return HttpResponse(json.dumps(mydata), content_type="application/json")
 
