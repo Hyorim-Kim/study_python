@@ -5,16 +5,24 @@
 <title>Insert title here</title>
 <script>
 	window.onload = function(){
-		document.getElementById("btnOk").onclick = function(){
-			frm.submit()
-			location.href="/list";
-		};
+		document.getElementById("btnOk").onclick = confirmFunc;
+ 	 	document.getElementById("btnShow").onclick = function () {
+	     	location.href = "/family/select";
+	     };
 	}
+	
+	function confirmFunc() {	
+			if (frm.name.value === "") {
+				frm.name.placeholder = "이름을 입력하세요"
+				return false;
+			}
+			frm.submit()
+		}
 </script>
 </head>
 <body>
 ♥♡ 가족 등록하기 ♡♥<p/>
-<form action="/insertok" method="post" name="frm" onsubmit="return false">{% csrf_token %}
+<form action="/family/insertok" method="post" name="frm" onsubmit="return false">{% csrf_token %}
 <!--form onsubmit="return false" : enter 쳤을 때 submit 되는거 방지-->
 	<table>
 		<tr>
@@ -31,13 +39,14 @@
 		</tr>
 		<tr>
 			<td>성별</td>
-			<td><input type="radio" name="gen" value="male" checked>남
-			 	 	 <input type="radio" name="gen" value="female">여
+			<td><input type="radio" name="gen" value="남" checked>남
+			 	 	 <input type="radio" name="gen" value="여">여
 			</td>
 		</tr>
 		<tr>
-			<td colspan="1">
+			<td colspan="2">
 				<input type="button" id="btnOk" value="등록">
+				<input type="button" id="btnShow" value="목록">
 			</td>
 		</tr>
 	</table>

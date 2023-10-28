@@ -23,6 +23,6 @@ import pro11app
 urlpatterns = [
     path("admin/", admin.site.urls),
     
-    path('', views.RegisterFunc),
-    path('list/', include(pro11app.urls)),
+    path('', views.MainFunc),
+    path('family/', include(pro11app.urls)),
 ]

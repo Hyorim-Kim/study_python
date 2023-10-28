@@ -3,6 +3,7 @@ from pro11app import views
 
 
 urlpatterns = [
-    path('', views.ListFunc),
+    path('select', views.ListFunc),
+    path('insert', views.InsertFunc),
     path('insertok', views.InsertOkFunc),
 ]
