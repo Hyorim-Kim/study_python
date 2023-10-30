@@ -9,7 +9,8 @@
     window.onload = function(){
         document.querySelector("#btn1").addEventListener("click", () => {
             xhr = new XMLHttpRequest();
-
+            <!--클릭 시 XMLHttpRequest 객체를 생성하고, 서버로부터 "burger" URL에 비동기적으로 데이터를 요청-->
+            
             xhr.onreadystatechange = function(){
                 if(xhr.readyState === XMLHttpRequest.DONE){
                     if(xhr.status === 200){
@@ -17,7 +18,6 @@
                     }
                 }
             }
-
             url = "burger";
             xhr.open("GET", url, true)
             xhr.send();
@@ -35,7 +35,6 @@
                 str += "<td>" + "<input type='number' value='0' min='0' name='burgersu' id='burgersu" + i + "'>" + "</td>";
                 str += "</tr>";
             }
-
             str += "</table>";
             str += "<input type='button' id='btn3' name='order' value='확인'>"
             document.querySelector("#show1").innerHTML = str;
@@ -89,7 +88,6 @@
                     }
                 }
             }
-
             url = "soda";
             xhr.open("GET", url, true)
             xhr.send();
@@ -154,12 +152,14 @@
 </script>
 </head>
 <body>
-메뉴 : <input type="submit" id="btn1" name="burger" value="버거">
-<input type="submit" id="btn2" name="soda" value="음료"> 이벤트
+메뉴 :
+<input type="submit" id="btn1" name="burger" value="버거">
+<input type="submit" id="btn2" name="soda" value="음료">
+이벤트
 <a href="/adminpage">관리자</a>
-<br>
-<div id="show1"></div>
-<div id="show2"></div>
-<div id="show3"></div>
+<br><br>
+<div id="show1"></div>  <!--버거 또는 음료에 대한 테이블을 보여주는 div 영역-->
+<div id="show2"></div>  <!--총 주문 가격을 나타내는 div 영역-->
+<div id="show3"></div>  <!--주문 후 남은 수량을 나타내는 div 영역-->
 </body>
 </html>
