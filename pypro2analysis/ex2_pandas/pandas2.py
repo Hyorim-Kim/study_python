@@ -27,15 +27,15 @@ print(data3)
 data3 = data2.reindex([0,1,2,3,4,5], method='backfill')  # 위와 동일
 print(data3)
 
-print('bool 처리')
+print('\nbool 처리')
 import numpy as np
 df = DataFrame(np.arange(12).reshape(4,3), index=['1월', '2월', '3월', '4월'], columns=['강남', '강북', '서대문'])
 print(df)
 print(df['강남'])
-print(df['강남'] > 3)
-print(df[df['강남'] > 3])  # 조건이 참일 때만 해당 테이블 출력
+print(df['강남'] > 3)  # True / False 반환
+print(df[df['강남'] > 3])  # 조건이 참일 때만 DataFrame 출력
 
-print('인덱싱 지원 함수 : loc() - 라벨 지원, iloc() - 숫자 지원')
+print('\n인덱싱 지원 함수 : loc() - 라벨 지원, iloc() - 숫자 지원')
 print(df.loc['3월', :])
 print(df.loc['3월', ])
 print(df.loc[:'2월' ])  # 2월 이하 행
@@ -44,7 +44,7 @@ print()
 print(df.iloc[2])
 print(df.iloc[2, :])
 print(df.iloc[:3])  # 3행 미만(0행, 1행, 2행)
-print(df.iloc[:3, 2])
+print(df.iloc[:3, 2])  # 3행 미만, 2열
 print(df.iloc[:3, 1:3])  # 3행 미만,  1,2열 출력
 
 print('Series 연산')
@@ -69,7 +69,7 @@ print(df1.add(df2, fill_value=0))
 
 print()
 print(df1)
-seri = df1.iloc[0]
+seri = df1.iloc[0]  # 0 행
 print(seri)
 print(df1 - seri)  # DataFrame - Series
 
@@ -87,6 +87,7 @@ print(df.dropna(how='all'))  # 행의 모든 값이 NaN일 때만 삭제
 print(df.dropna(subset=['one']))  # 특정 열에 NaN이 있는 행 삭제
 print(df.dropna(axis='rows'))
 print(df.dropna(axis='columns'))
+
 print()
 print(df.fillna(0))
 
@@ -97,10 +98,10 @@ print(df.sum())
 print(df.sum(axis=0))  # 열의 합, 상동
 print(df.sum(axis=1))  # 행의 합
 print()
-print(df.mean(axis=1))
+print(df.mean(axis=1))  # 행의 평균
 print(df.mean(axis=1, skipna=True))  # NaN은 연산에서 제외
 print(df.mean(axis=1, skipna=False))
-print(df.mean(axis=0, skipna=True))  # 열 단위?
+print(df.mean(axis=0, skipna=True))  # 열 단위
 
 print('***' *10)
 print(df.describe())  # 요약 통계량 출력

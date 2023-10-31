@@ -9,7 +9,7 @@ import numpy as np
 # Series : 일련의 데이터(객체)를 담을 수 있는 1차원 배열과 같은 구조로 색인을 갖는다. 인덱싱 된 데이터의 1차원 배열!
 obj = pd.Series([3, 7, -5, 5])  # list 가능
 # obj = pd.Series((3, 7, -5, 5))  # tuple 가능
-# obj = pd.Series({3, 7, -5, 5})  # TypeError: 'set' type is unordered : 순서 없어서 안됨
+# obj = pd.Series({3, 7, -5, 5})  # TypeError: 'set' type is unordered : set은 순서 없어서 안됨
 print(obj, type(obj))
 obj2 = pd.Series([3, 7, -5, 5], index=['a', 'b', 'c', 'd'])
 print(obj2, type(obj2))
@@ -26,7 +26,7 @@ print(obj2['a':'c'])
 print(obj2[2])
 print(obj2[1:4])
 print(obj2[[2,1]])
-print(obj2 > 0)
+print(obj2 > 0)  # True / False 반환
 print('a' in obj2)
 
 print('\ndict type : Series 객체로 처리')
@@ -59,7 +59,7 @@ print(df2.irum, type(df2.irum))
 print()
 print(DataFrame(data, columns=['juso', 'irum', 'nai']))  # column 순서 변경
 
-print('data에 없는 열 값을 주면 NaN으로 채움')
+print('\ndata에 없는 열 값을 주면 NaN으로 채움')
 df3 = DataFrame(data, columns=['irum', 'juso', 'nai', 'tel'],\
                 index=['a', 'b', 'c', 'd'])
 print(df3)
@@ -96,7 +96,7 @@ print()
 counts = df4['juso'].value_counts()
 print('열 값 개수 : ', counts)
 
-print('문자열 자르기')
+print('\n문자열 자르기')
 data = {
     'juso':['강남구 역삼동', '중구 신당동', '강남구 대치동'],
     'inwon':[23, 25, 21]
