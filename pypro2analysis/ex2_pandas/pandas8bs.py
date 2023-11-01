@@ -53,6 +53,8 @@ htmlData3 = """
      <a href="https://www.naver.com">네이버</a><br/>
      <a href="https://www.daum.net">다음</a><br/>
 </div>
+</body>
+</html>
 """
 soup3 = BeautifulSoup(htmlData3, 'lxml')
 print(soup3.find_all("a"))
@@ -72,10 +74,55 @@ links2 = soup3.find_all(href=re.compile(r'^https'))
 for j in links2:
     print(j.attrs['href'])
 
+"""
+print('\n벅스 뮤직 사이트에서 곡 제목 읽기')
+from urllib.request import urlopen
+url = urlopen("https://music.bugs.co.kr/chart")
+soup = BeautifulSoup(url.read(), 'html.parser')  # html.parser / lxml : parser
+# print(soup)  # 읽었음, beautiful soup 객체
+musics = soup.find_all('td', class_='check')  # class가 check인 td 엘리먼트 찾음
+# print(musics)  # 들어온거 확인
+for i, music in enumerate(musics):  # enumerate를 사용하면 인덱스 확인가능
+    print("{}위 : {}".format(i+1, music.input['title']))  # i는 0부터 출발하니까 +1
+"""
 
+print('\nselect_one, select : css의 selector를 사용')
+htmlData4 = """
+<html>
+<body>
+<div id="hello">
+     <a href="https://www.naver.com">네이버</a><br/>
+     <span>
+         <a href="https://www.daum.net">다음</a><br/>
+     </span>
+     <ul class="world">
+          <li>안녕</li>
+          <li>반갑다</li>
+     </ul>
+</div>
+<div id="hi" class="good">
+     두번째 디브 태그
+</div>
+</body>
+</html>
+"""
+soup4 = BeautifulSoup(htmlData4, 'lxml')
+kbs = soup4.select_one("div#hello > a")  # 단수 선택, id hello의 div 태그 안의 a 태그
+print('kbs : ', kbs, ' ', kbs.string)
+kbs2 = soup4.select_one("div.good")  # class good의 div 태그
+print('kbs2 : ', kbs2, ' ', kbs2.string)
+print()
+mbc = soup4.select("div#hello ul.world > li")  # 복수 선택, hello>ul : 직계, hello ul : 자손(손자도 잡힘)
+print('mbc : ', mbc)
+for a in mbc:
+    print(a.string, ' ')
 
+print()
+msg = list()
+for a in mbc:
+    msg.append(a.string)
 
-
-
-
-
+import pandas as pd
+df = pd.DataFrame(msg, columns=['자료'])
+print(df)
+print(df.to_json())
