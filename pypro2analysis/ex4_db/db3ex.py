@@ -66,13 +66,21 @@ try:
     print(df2)
     print()
     
+    # 문제a-6)
+    # 부서명별 연봉의 평균으로 가로 막대 그래프를 작성
+    jik_ypay = df.groupby(['부서명'])['연봉'].mean()
+    plt.bar(jik_ypay.index, jik_ypay)
+    plt.title('부서명별 연봉의 평균')
+    plt.xlabel('부서명')
+    plt.ylabel('평균 연봉')
+    plt.show()
 
-    # # 시각화 : pie
-    # jik_ypay = df3.groupby(['직급'])['연봉'].mean()  # 반환값 Series
-    # print(jik_ypay.index)
-    # print(jik_ypay.values)
-    # plt.pie(jik_ypay, labels=jik_ypay.index, shadow=True, labeldistance=0.7, counterclock=False)
-    # plt.close()
+
+
+
+
+
+
 
 except Exception as e:
     print('처리 오류 :', e)
