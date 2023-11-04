@@ -1,3 +1,4 @@
+# pandas 문제 4)
 import pandas as pd
 
 # 1. human.csv 파일을 읽어오기

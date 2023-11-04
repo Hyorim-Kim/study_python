@@ -75,35 +75,33 @@ try:
     plt.ylabel('평균 연봉')
     plt.show()
 
+    # 문제b-1)
+    # pivot_table을 사용하여 성별 연봉의 평균을 출력
+    sql3 = """
+            select jikwon_no,jikwon_name,buser_name,jikwon_pay,jikwon_jik,jikwon_gen
+            from jikwon j join 
+            buser b on b.buser_no=j.buser_num
+        """
+    cursor.execute(sql3)
+    df3 = pd.DataFrame(cursor.fetchall(), columns=['사번', '이름', '부서명', '연봉', '직급', '성별'])
 
+    print(df3.pivot_table(['연봉'], index=['성별'], aggfunc=np.mean))
+    print()
 
+    # 문제b-2)
+    # 성별(남, 여) 연봉의 평균으로 시각화 - 세로 막대 그래프
+    jik_a = df3.groupby(['성별'])['연봉'].mean()
+    plt.barh(jik_a.index, jik_a)
+    plt.show()
 
-
-
-
+    # 문제b-3)
+    # 부서명, 성별로 교차 테이블을 작성 (crosstab(부서, 성별))
+    tab = pd.crosstab(df3['부서명'], df3['성별'], margins=True)
+    print(tab)
 
 except Exception as e:
     print('처리 오류 :', e)
-
+    
 finally:
     cursor.close()
     conn.close()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

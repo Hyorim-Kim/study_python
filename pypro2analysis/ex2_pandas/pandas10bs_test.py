@@ -1,4 +1,4 @@
-# 이름, 가격 정보, 가격의 평균과 표준편차, 최고가격 최저가격
+# 이름, 가격 정보, 가격의 평균과 표준편차, 최고가격 최저가격 출력
 import urllib.request as req
 from bs4 import BeautifulSoup
 import urllib
@@ -6,7 +6,6 @@ import urllib
 print('교촌 치킨 자료 읽기')
 url = "https://www.kyochon.com/menu/chicken.asp"
 chicken = req.urlopen(url)
-
 soup = BeautifulSoup(chicken, 'lxml')
 
 name = soup.select("dl.txt > dt")
