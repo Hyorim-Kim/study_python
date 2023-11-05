@@ -1,6 +1,6 @@
 # 한글 형태소 분석
-# 형태소 :
-# 한글 형태소 분석 도구로 KoNLpy
+# 분석 도구로 KoNLpy 사용
+# Kkma, Okt(Open Korean Text), Komoran 사용
 from konlpy.tag import Kkma, Okt, Komoran
 
 kkma = Kkma()

@@ -6,7 +6,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 plt.rc('font', family='malgun gothic')
 plt.rcParams['axes.unicode_minus'] = False  # 한글 처리때 음수가 깨지는 것을 방지하기 위해 사용
-import seaborn as sns
 import sys
 import csv
 
