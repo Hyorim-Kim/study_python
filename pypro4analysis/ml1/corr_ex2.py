@@ -27,8 +27,8 @@ print()
 # 상관계수
 print(np.corrcoef(data.친밀도, data.적절성))  # numpy
 print(data.corr())  # pandas
-print(data.corr(method='pearson'))    # 변수가 등간, 비율 척도. 정규분포 (default)
-print(data.corr(method='spearman')) # 서열척도. 비정규분포
+print(data.corr(method='pearson'))    # 변수가 등간, 비율 척도. 정규분포. (default)
+print(data.corr(method='spearman')) # 서열척도. 비정규분포.
 print(data.corr(method='kendall'))      # spearman과 유사
 
 print()
