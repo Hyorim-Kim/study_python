@@ -6,19 +6,22 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 plt.rc('font', family='malgun gothic')
-import json
+
 
 data = pd.read_csv('../testdata/Advertising.csv')
 print(data.head(3), data.shape)
 
+df1 = pd.DataFrame(data, columns=('tv','radio','newspaper'))
+print(df1.head(3))
+
 print()
 # 상관계수
-print(data.corr(method='pearson'))
+print(df1.corr(method='pearson'))
 # tv, radio : 0.054809
 # tv, newspaper : 0.056648
 # radio, newspaper : 0.354104
 
 # heatmap
 import seaborn as sns
-sns.heatmap(data.corr())
+sns.heatmap(df1.corr())
 plt.show()
