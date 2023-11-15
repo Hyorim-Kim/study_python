@@ -18,18 +18,19 @@ print(y[:10])
 print('상관계수 : ', np.corrcoef(x, y))  # 0.99939357
 
 scaler = MinMaxScaler()  # 정규화
-x_scaled = scaler.fit_transform(x.reshape(-1, 1))
-print(x_scaled[:10].flatten())  # 2차원 => 1차원
+x_scaled = scaler.fit_transform(x.reshape(-1, 1))  # fit_transform 메서드를 사용하여 데이터를 정규화
+# x.reshape(-1, 1)은 x 배열을 열 벡터로 변환하는데, -1은 차원을 자동으로 조정하라는 의미. 따라서 x 배열이 원래 1차원이었다면 열 벡터로 변환됨
+print(x_scaled[:10].flatten())  # flatten : 2차원 => 1차원
 
 # 시각화
 # plt.scatter(x_scaled, y)
 # plt.show()
 
-model = LinearRegression().fit(x_scaled, y)
+model = LinearRegression().fit(x_scaled, y)  # x_scaled는 정규화된 입력 데이터, y는 실제 출력 데이터(타겟)
 print(model)
-y_pred = model.predict(x_scaled)
-print('예측값 : ', y_pred[:10])
+y_pred = model.predict(x_scaled)  # 입력 데이터에 대한 예측값을 계산
 print('실제값 : ', y[:10])
+print('예측값 : ', y_pred[:10])
 
 # 모델 성능 확인
 # print(model.summary())  # 'summary' 지원 X
@@ -58,8 +59,8 @@ print(x_scaled2[:10].flatten())  # 2차원 => 1차원
 
 model2 = LinearRegression().fit(x_scaled2, y)
 y_pred2 = model2.predict(x_scaled2)
-print('예측값 : ', y_pred2[:10])  # 예측값 제대로 안나옴(좋은 모델이 아니기 때문)
 print('실제값 : ', y[:10])
+print('예측값 : ', y_pred2[:10])  # 예측값 제대로 안나옴(좋은 모델이 아니기 때문)
 regScoreFunc(y, y_pred2)
 # r2_score(결정계수, 설명력) : 1.6093526521765433e-05
 # explained_variance_score(설명분산점수) : 1.6093526521765433e-05

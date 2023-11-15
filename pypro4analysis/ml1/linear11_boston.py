@@ -21,7 +21,7 @@ model.fit(x, y)
 # model_r2 = r2_score(y, y_lin_fit)
 # print('model_r2 : ', model_r2)  # 0.54414
 
-x_fit = np.arange(x.min(), x.max(), 1)[:, np.newaxis]  # 차트 작성용 시작
+x_fit = np.arange(x.min(), x.max(), 1)[:, np.newaxis]  # 차트 작성 시작, newaxis : 2차원 배열로 변환(벡터로 변환됨)
 print(x_fit)
 # [[ 1.73]
 #  [ 2.73]
