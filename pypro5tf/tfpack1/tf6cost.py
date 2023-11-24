@@ -18,7 +18,7 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 
 x = [1,2,3,4,5]
-y = [1,2,3,4,5]
+y = [2,4,6,8,10]
 b = 0
 # hypothesis = w * x + b
 # cost = tf.reduce_sum(tf.pow(hypothesis - y, 2)) / len(x)
