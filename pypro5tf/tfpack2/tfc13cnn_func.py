@@ -1,6 +1,7 @@
 # CNN은 Convolutional Neural Networks의 약자로 딥러닝에서 주로 이미지나 영상 데이터를 처리할 때 쓰이며
 # 이름에서 알수있다시피 Convolution이라는 전처리 작업이 들어가는 Neural Network 모델
 # 특징추출 알고리즘 사용 : 이미지나 텍스트 데이터를 conv와 pooling을 반복하여 데이터 양을 줄인 후 완전연결층으로 전달해 분류작업
+# 가급적이면 sequential api보다 functional api 사용하기 **
 
 import tensorflow as tf
 import keras
@@ -24,34 +25,32 @@ x_test = x_test / 255.0
 # 모델 (CNN : 고해상도, 크기가 큰 이미지를 전처리 후 작은 이미지로 변환 후 ==> Dense(완전연결층으로 전달)로 분류 진행
 input_shape = (28, 28, 1)
 
-print('방법1 : Sequential API 사용')
-model = keras.models.Sequential()
+print('방법2 : functional API 사용')
+img_input = keras.layers.Input(shape=input_shape)
 
-# Conv2D(필터 수, 필터크기, 스트라이드(필터이동량), 패딩여부, ...)
-# padding='valid' : 원본이미지 밖에 0으로 채우기를 안함, same : 0으로 채우기를 함
-# Conv(합성곱) : 필터를 이미지 일부분과 픽셀끼리 곱한 후 결과를 더하기한다.
-model.add(keras.layers.Conv2D(filters=16, kernel_size=(3,3), strides=(1,1), padding='valid', \
-                                                            activation='relu', input_shape=input_shape))
-# pooling : 이미지 특징을 유지한 채로 크기를 줄임, 노이즈 제거 효과
-model.add(keras.layers.MaxPool2D(pool_size=(2,2)))  # 선택사항
-model.add(keras.layers.Dropout(rate=0.3))  # 과적합 방지
+net = keras.layers.Conv2D(filters=16, kernel_size=(3,3), strides=(1,1), activation='relu')(img_input)
+net = keras.layers.MaxPooling2D(pool_size=(2,2))(net)
+net = keras.layers.Dropout(rate=0.3)(net)
 
-model.add(keras.layers.Conv2D(filters=32, kernel_size=(3,3), strides=(1,1), padding='valid', activation='relu'))
-model.add(keras.layers.MaxPool2D(pool_size=(2,2)))
-model.add(keras.layers.Dropout(rate=0.3))
+net = keras.layers.Conv2D(filters=32, kernel_size=(3,3), strides=(1,1), activation='relu')(img_input)
+net = keras.layers.MaxPooling2D(pool_size=(2,2))(net)
+net = keras.layers.Dropout(rate=0.3)(net)
 
-model.add(keras.layers.Conv2D(filters=64, kernel_size=(3,3), strides=(1,1), padding='valid', activation='relu'))
-model.add(keras.layers.MaxPool2D(pool_size=(2,2)))
-model.add(keras.layers.Dropout(rate=0.3))
+net = keras.layers.Conv2D(filters=64, kernel_size=(3,3), strides=(1,1), activation='relu')(img_input)
+net = keras.layers.MaxPooling2D(pool_size=(2,2))(net)
+net = keras.layers.Dropout(rate=0.3)(net)
 
-model.add(keras.layers.Flatten())  # FCLayer(Fully Connected Layer) : 이미지를 1차원으로 변경
+net = keras.layers.Flatten()(net)
 
-# Dense
-model.add(keras.layers.Dense(units=64, activation='relu'))
-model.add(keras.layers.Dropout(rate=0.2))
-model.add(keras.layers.Dense(units=32, activation='relu'))
-model.add(keras.layers.Dropout(rate=0.2))
-model.add(keras.layers.Dense(units=10, activation='softmax'))
+net = keras.layers.Dense(units=64, activation='relu')(net)
+net = keras.layers.Dropout(rate=0.2)(net)
+
+net = keras.layers.Dense(units=32, activation='relu')(net)
+net = keras.layers.Dropout(rate=0.2)(net)
+
+outputs = keras.layers.Dense(units=10, activation='softmax')(net)
+
+model = keras.Model(inputs=img_input, outputs=outputs)
 
 print(model.summary())
 
@@ -105,8 +104,3 @@ def plot_loss(title = None):
 
 plot_loss('loss')
 plt.show()
-
-model.save('tfc12model.h5')
-#----------------------------------------
-# 새이미지 분류 작업 ...
-
